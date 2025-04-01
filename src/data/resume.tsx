@@ -5,7 +5,7 @@ import { MdEmail } from "react-icons/md";
 export const DATA = {
   name: "Kayque Goldner",
   initials: "KG",
-  url: "https://google.com", // TODO: change to portfolio URL
+  url: "https://kayquegoldner.vercel.app/",
   location: "Espírito Santo, BR",
   description: "Desenvolvedor Web.",
   summary:
