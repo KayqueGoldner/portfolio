@@ -58,7 +58,7 @@ export default function Page() {
             {DATA.skills.map((skill) => (
               <div
                 key={skill.label}
-                className="flex items-center gap-1 rounded-md border border-neutral-300 px-4 py-2 shadow dark:border-neutral-900"
+                className="flex items-center gap-1 rounded-md border border-neutral-300 px-4 py-2 shadow-sm dark:border-neutral-900"
               >
                 <Image
                   src={skill.icon}
