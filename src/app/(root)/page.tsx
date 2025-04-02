@@ -8,18 +8,14 @@ import { DATA } from "@/data/resume";
 import { Button } from "@/components/ui/button";
 import { Hero } from "@/components/sections/hero";
 import { BackgroundIconsEffect } from "@/components/background-icons-effect";
+import { About } from "@/components/sections/about";
 
 export default function Page() {
   return (
     <main className="relative flex min-h-dvh flex-col gap-10">
       <BackgroundIconsEffect />
       <Hero />
-      <section id="about">
-        <h2 className="text-xl font-bold">Sobre</h2>
-        <p className="prose dark:prose-invert text-muted-foreground max-w-full font-sans text-base text-pretty">
-          {DATA.summary}
-        </p>
-      </section>
+      <About />
       <section id="education">
         <div className="flex min-h-0 flex-col gap-y-3">
           <h2 className="text-xl font-bold">Educação</h2>
