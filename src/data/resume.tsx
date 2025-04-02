@@ -7,7 +7,7 @@ export const DATA = {
   initials: "KG",
   url: "https://kayquegoldner.vercel.app/",
   location: "Espírito Santo, BR",
-  description: "Desenvolvedor Web.",
+  description: "Desenvolvedor Web",
   summary:
     "Desenvolvedor Web dedicado a criar aplicações acessíveis, altamente otimizadas e escaláveis, focando na experiência do usuário e nas melhores práticas de desenvolvimento.",
   avatarUrl: "/me.jpg",

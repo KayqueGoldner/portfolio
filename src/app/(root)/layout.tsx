@@ -1,14 +1,11 @@
 import "@/app/globals.css";
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
-import dynamic from "next/dynamic";
 
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
-
-const Navbar = dynamic(() => import("@/components/navbar"));
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -73,15 +70,12 @@ export default function RootLayout({
     <html lang="pt-BR" suppressHydrationWarning>
       <body
         className={cn(
-          "mx-auto min-h-screen max-w-2xl bg-background px-6 py-12 font-sans antialiased sm:py-24",
+          "bg-background mx-auto min-h-screen max-w-4xl px-6 pt-6 pb-12 font-sans antialiased sm:py-24",
           fontSans.variable,
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system">
-          <TooltipProvider delayDuration={0}>
-            {children}
-            <Navbar />
-          </TooltipProvider>
+          <TooltipProvider delayDuration={0}>{children}</TooltipProvider>
         </ThemeProvider>
         <script
           type="application/ld+json"

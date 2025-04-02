@@ -6,33 +6,17 @@ import { ProjectCard } from "@/components/project-card";
 import { ResumeCard } from "@/components/resume-card";
 import { DATA } from "@/data/resume";
 import { Button } from "@/components/ui/button";
+import { Hero } from "@/components/sections/hero";
+import { BackgroundIconsEffect } from "@/components/background-icons-effect";
 
 export default function Page() {
   return (
-    <main className="flex min-h-dvh flex-col space-y-10">
-      <section id="hero">
-        <div className="mx-auto w-full max-w-2xl space-y-8">
-          <div className="flex justify-between gap-2">
-            <div className="flex flex-1 flex-col gap-3">
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                {DATA.name}
-              </h1>
-              <p className="max-w-[600px] md:text-xl">{DATA.description}</p>
-            </div>
-            <Image
-              alt={DATA.name}
-              src={DATA.avatarUrl}
-              width={192}
-              height={192}
-              className="size-28 rounded-full"
-              priority
-            />
-          </div>
-        </div>
-      </section>
+    <main className="relative flex min-h-dvh flex-col gap-10">
+      <BackgroundIconsEffect />
+      <Hero />
       <section id="about">
         <h2 className="text-xl font-bold">Sobre</h2>
-        <p className="prose dark:prose-invert max-w-full text-pretty font-sans text-base text-muted-foreground">
+        <p className="prose dark:prose-invert text-muted-foreground max-w-full font-sans text-base text-pretty">
           {DATA.summary}
         </p>
       </section>
@@ -77,7 +61,7 @@ export default function Page() {
         <div className="w-full space-y-12 py-12">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
-              <div className="inline-block rounded-lg bg-foreground px-3 py-1 text-sm text-background">
+              <div className="bg-foreground text-background inline-block rounded-lg px-3 py-1 text-sm">
                 Meus Projetos
               </div>
               <h2 className="text-2xl font-bold tracking-tighter sm:text-4xl">
@@ -110,7 +94,7 @@ export default function Page() {
       <section id="contact">
         <div className="grid w-full items-center justify-center gap-4 px-4 py-12 text-center md:px-6">
           <div className="space-y-5">
-            <div className="inline-block rounded-lg bg-foreground px-3 py-1 text-sm text-background">
+            <div className="bg-foreground text-background inline-block rounded-lg px-3 py-1 text-sm">
               Contato
             </div>
             <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
