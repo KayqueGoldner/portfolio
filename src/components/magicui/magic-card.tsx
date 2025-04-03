@@ -79,7 +79,7 @@ export function MagicCard({
 
   useEffect(() => {
     if (!isMounted) return;
-    
+
     document.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseout", handleMouseOut);
     document.addEventListener("mouseenter", handleMouseEnter);

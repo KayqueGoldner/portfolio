@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Hero } from "@/components/sections/hero";
 import { BackgroundIconsEffect } from "@/components/background-icons-effect";
 import { About } from "@/components/sections/about";
+import { Education } from "@/components/sections/education";
 
 export default function Page() {
   return (
@@ -16,21 +17,7 @@ export default function Page() {
       <BackgroundIconsEffect />
       <Hero />
       <About />
-      <section id="education">
-        <div className="flex min-h-0 flex-col gap-y-3">
-          <h2 className="text-xl font-bold">Educação</h2>
-          {DATA.education.map((education) => (
-            <ResumeCard
-              key={education.school}
-              href={education.href}
-              logoUrl={education.logoUrl}
-              altText={education.school}
-              title={education.school}
-              subtitle={education.degree}
-            />
-          ))}
-        </div>
-      </section>
+      <Education />
       <section id="skills">
         <div className="flex min-h-0 flex-col gap-y-3">
           <h2 className="text-xl font-bold">Habilidades</h2>
