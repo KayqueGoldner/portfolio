@@ -9,7 +9,7 @@ export const Education = () => {
     <section id="education" className="mt-16">
       <GlassmorphismCard className="px-5 py-10">
         <h2 className="mb-3 text-center text-2xl font-bold">Educação</h2>
-        <div className="flex min-h-0 flex-wrap gap-3">
+        <div className="flex min-h-0 flex-col flex-wrap gap-3 sm:flex-row">
           {DATA.education.map((education) => (
             <ResumeCard
               key={education.school}

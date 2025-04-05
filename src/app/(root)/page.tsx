@@ -1,15 +1,14 @@
 import Link from "next/link";
-import Image from "next/image";
 import { FaLinkedin } from "react-icons/fa";
 
 import { ProjectCard } from "@/components/project-card";
-import { ResumeCard } from "@/components/resume-card";
 import { DATA } from "@/data/resume";
 import { Button } from "@/components/ui/button";
 import { Hero } from "@/components/sections/hero";
 import { BackgroundIconsEffect } from "@/components/background-icons-effect";
 import { About } from "@/components/sections/about";
 import { Education } from "@/components/sections/education";
+import { Skills } from "@/components/sections/skills";
 
 export default function Page() {
   return (
@@ -18,28 +17,7 @@ export default function Page() {
       <Hero />
       <About />
       <Education />
-      <section id="skills">
-        <div className="flex min-h-0 flex-col gap-y-3">
-          <h2 className="text-xl font-bold">Habilidades</h2>
-          <div className="flex flex-wrap gap-3">
-            {DATA.skills.map((skill) => (
-              <div
-                key={skill.label}
-                className="flex items-center gap-1 rounded-md border border-neutral-300 px-4 py-2 shadow-sm dark:border-neutral-900"
-              >
-                <Image
-                  src={skill.icon}
-                  alt={skill.label}
-                  width={20}
-                  height={20}
-                  className="dark:invert"
-                />
-                <h3 className="font-medium">{skill.label}</h3>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Skills />
       <section id="projects">
         <div className="w-full space-y-12 py-12">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
