@@ -221,5 +221,68 @@ export const DATA = {
       image: "/projects/xora-ai-video-editor.png",
       video: "",
     },
+    {
+      title: "OrderEasy Restaurant Dashboard",
+      href: "",
+      dates: "2025",
+      active: true,
+      description:
+        "Um painel moderno de gerenciamento de restaurantes que permite aos proprietários de restaurantes gerenciar o estoque, monitorar vendas, analisar relatórios e gerenciar configurações do usuário.",
+      technologies: [
+        "Next.js",
+        "TypeScript",
+        "TailwindCSS",
+        "Shadcn UI",
+        "TRPC",
+        "Auth.js",
+        "Drizzle ORM",
+        "Stripe",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "",
+          icon: <FaRegEye className="size-4" />,
+        },
+        {
+          type: "GitHub",
+          href: "https://github.com/KayqueGoldner/ordereasy-restaurant-dashboard-nextjs",
+          icon: <FaGithub className="size-4" />,
+        },
+      ],
+      image: "/projects/ordereasy-dashboard.png",
+      video: "",
+    },
+    {
+      title: "Library Management System",
+      href: "https://library-management-system-nextjs.vercel.app/",
+      dates: "2025",
+      active: true,
+      description:
+        "Um sistema moderno de gerenciamento de biblioteca que permite aos usuários navegar, pesquisar e gerenciar livros. O aplicativo fornece uma experiência perfeita para administradores e usuários da biblioteca.",
+      technologies: [
+        "Next.js",
+        "TypeScript",
+        "TailwindCSS",
+        "Shadcn UI",
+        "Auth.js",
+        "Drizzle ORM",
+        "Upstash",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://library-management-system-nextjs.vercel.app/",
+          icon: <FaRegEye className="size-4" />,
+        },
+        {
+          type: "GitHub",
+          href: "https://github.com/KayqueGoldner/library-management-system-nextjs",
+          icon: <FaGithub className="size-4" />,
+        },
+      ],
+      image: "/projects/library-management-system.png",
+      video: "",
+    },
   ],
-} as const;
+};

@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { FaLinkedin } from "react-icons/fa";
 
-import { ProjectCard } from "@/components/project-card";
 import { DATA } from "@/data/resume";
 import { Button } from "@/components/ui/button";
 import { Hero } from "@/components/sections/hero";
@@ -9,6 +8,7 @@ import { BackgroundIconsEffect } from "@/components/background-icons-effect";
 import { About } from "@/components/sections/about";
 import { Education } from "@/components/sections/education";
 import { Skills } from "@/components/sections/skills";
+import { Projects } from "@/components/sections/projects";
 
 export default function Page() {
   return (
@@ -18,40 +18,7 @@ export default function Page() {
       <About />
       <Education />
       <Skills />
-      <section id="projects">
-        <div className="w-full space-y-12 py-12">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center">
-            <div className="space-y-2">
-              <div className="bg-foreground text-background inline-block rounded-lg px-3 py-1 text-sm">
-                Meus Projetos
-              </div>
-              <h2 className="text-2xl font-bold tracking-tighter sm:text-4xl">
-                Veja o meu trabalho mais recente
-              </h2>
-              <p className="text-muted-foreground md:text-lg/tight lg:text-base/tight xl:text-lg/tight">
-                Trabalhei em uma variedade de projetos, desde sites simples até
-                aplicações web mais complexas. Aqui estão alguns dos meus
-                favoritos.
-              </p>
-            </div>
-          </div>
-          <div className="mx-auto grid max-w-[800px] grid-cols-1 gap-3 sm:grid-cols-2">
-            {DATA.projects.map((project) => (
-              <ProjectCard
-                key={project.title}
-                href={project.href}
-                title={project.title}
-                description={project.description}
-                dates={project.dates}
-                tags={project.technologies}
-                image={project.image}
-                video={project.video}
-                links={project.links}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
+      <Projects />
       <section id="contact">
         <div className="grid w-full items-center justify-center gap-4 px-4 py-12 text-center md:px-6">
           <div className="space-y-5">
