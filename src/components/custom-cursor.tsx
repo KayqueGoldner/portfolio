@@ -75,6 +75,22 @@ export function CustomCursor() {
       setIsPointer(!!isClickable);
     };
 
+    // Handle scroll event to reset sticky cursor
+    const handleScroll = () => {
+      if (stickyElement || isExiting) {
+        if (exitTimerRef.current) {
+          clearTimeout(exitTimerRef.current);
+          exitTimerRef.current = null;
+        }
+
+        // Reset sticky states immediately
+        setStickyElement(null);
+        setStickyRect(null);
+        setIsExiting(false);
+        setIsPointer(false);
+      }
+    };
+
     const handleMouseDown = () => setIsClicking(true);
     const handleMouseUp = () => setIsClicking(false);
     const handleMouseEnter = () => setIsVisible(true);
@@ -90,6 +106,7 @@ export function CustomCursor() {
     document.addEventListener("mouseup", handleMouseUp);
     document.addEventListener("mouseenter", handleMouseEnter);
     document.addEventListener("mouseleave", handleMouseLeave);
+    document.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       if (rafRef.current) {
@@ -103,6 +120,7 @@ export function CustomCursor() {
       document.removeEventListener("mouseup", handleMouseUp);
       document.removeEventListener("mouseenter", handleMouseEnter);
       document.removeEventListener("mouseleave", handleMouseLeave);
+      document.removeEventListener("scroll", handleScroll);
     };
   }, [cursorX, cursorY, stickyElement, isExiting]);
 
@@ -273,7 +291,7 @@ export function CustomCursor() {
       </AnimatePresence>
 
       {/* Decorative particles that follow the cursor */}
-      {isPointer && !stickyElement && !isExiting && (
+      {isPointer && !stickyElement && !isExiting && isVisible && (
         <motion.div
           className="pointer-events-none fixed top-0 left-0 z-[9998]"
           style={{
