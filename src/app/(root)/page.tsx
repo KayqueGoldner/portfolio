@@ -114,7 +114,7 @@ export default function Page() {
       ) : (
         <motion.main
           key="content"
-          className="relative flex min-h-dvh flex-col gap-10 pt-6 pb-12 sm:py-24"
+          className="relative mx-auto flex min-h-dvh max-w-4xl flex-col gap-10 pt-6 pb-12 sm:py-24"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, ease: "easeInOut" }}

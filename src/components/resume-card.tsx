@@ -24,7 +24,10 @@ export const ResumeCard = ({
 }: ResumeCardProps) => {
   return (
     <Link href={href || "#"} className="block cursor-pointer" target="_blank">
-      <Card className="flex items-center gap-4 bg-transparent py-1.5 pr-10 pl-3 shadow-none">
+      <Card
+        className="flex items-center gap-4 bg-transparent py-1.5 pr-10 pl-3 shadow-none"
+        data-cursor-stick
+      >
         <div className="flex-none">
           <Image
             src={logoUrl}

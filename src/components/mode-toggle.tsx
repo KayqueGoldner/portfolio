@@ -14,6 +14,7 @@ export function ModeToggle() {
       size="icon"
       className="size-12 cursor-pointer rounded-full px-2"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      data-cursor-stick
     >
       <SunIcon className="size-[1.2rem] text-neutral-800 dark:hidden dark:text-neutral-200" />
       <MoonIcon className="hidden size-[1.2rem] text-neutral-800 dark:block dark:text-neutral-200" />

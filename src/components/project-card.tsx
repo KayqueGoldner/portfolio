@@ -113,6 +113,7 @@ export function ProjectCard({
                     href={link?.href}
                     target="_blank"
                     className="flex gap-2 text-xs font-semibold"
+                    data-cursor-stick
                   >
                     {link.icon}
                     {link.type}

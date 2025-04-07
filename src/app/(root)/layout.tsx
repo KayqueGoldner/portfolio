@@ -1,11 +1,13 @@
 import "@/app/globals.css";
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google";
+import dynamic from "next/dynamic";
 
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
+import { CustomCursor } from "@/components/custom-cursor";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -70,12 +72,15 @@ export default function RootLayout({
     <html lang="pt-BR" suppressHydrationWarning>
       <body
         className={cn(
-          "bg-background mx-auto min-h-screen max-w-4xl overflow-y-scroll px-4 font-sans antialiased",
+          "bg-background min-h-screen overflow-y-scroll px-4 font-sans antialiased",
           fontSans.variable,
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system">
-          <TooltipProvider delayDuration={0}>{children}</TooltipProvider>
+          <TooltipProvider delayDuration={0}>
+            {children}
+            <CustomCursor />
+          </TooltipProvider>
         </ThemeProvider>
         <script
           type="application/ld+json"

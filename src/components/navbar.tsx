@@ -87,6 +87,7 @@ export default function Navbar() {
                     buttonVariants({ variant: "ghost", size: "icon" }),
                     "size-12 rounded-full",
                   )}
+                  data-cursor-stick
                 >
                   <item.icon className="size-4" />
                 </Link>
@@ -111,6 +112,7 @@ export default function Navbar() {
                       "size-12",
                     )}
                     target="_blank"
+                    data-cursor-stick
                   >
                     <social.icon className="size-4" />
                   </Link>
