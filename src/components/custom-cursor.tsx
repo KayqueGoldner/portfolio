@@ -164,7 +164,7 @@ export function CustomCursor() {
       />
 
       {/* Cursor ring - either follows cursor or sticks to element */}
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="sync">
         {!stickyElement && !isExiting ? (
           <motion.div
             key="normal-ring"
@@ -211,8 +211,8 @@ export function CustomCursor() {
             key="exiting-ring"
             className="border-primary pointer-events-none fixed top-0 left-0 z-[9999] -translate-x-1/2 -translate-y-1/2 rounded-full border-2 transition-opacity duration-100"
             initial={{
-              width: stickyRect?.width ?? 0,
-              height: stickyRect?.height ?? 0,
+              width: stickyRect?.width ?? 32,
+              height: stickyRect?.height ?? 32,
               borderRadius: stickyElement
                 ? window.getComputedStyle(stickyElement).borderRadius
                 : "0.25rem",
@@ -224,7 +224,7 @@ export function CustomCursor() {
               height: 32,
               borderRadius: "9999px",
               opacity: 0.5,
-              scale: 0.9,
+              scale: 1,
             }}
             style={{
               x: ringSpringX,
@@ -246,8 +246,8 @@ export function CustomCursor() {
             style={{
               top: stickyRect?.top ?? 0,
               left: stickyRect?.left ?? 0,
-              width: stickyRect?.width ?? 0,
-              height: stickyRect?.height ?? 0,
+              width: stickyRect?.width ?? 32,
+              height: stickyRect?.height ?? 32,
               border: "2px solid hsl(var(--primary))",
               boxShadow: "0 0 15px 2px hsl(var(--primary)/0.2)",
               borderRadius: stickyElement
