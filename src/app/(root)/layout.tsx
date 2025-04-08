@@ -7,7 +7,10 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
-import { CustomCursor } from "@/components/custom-cursor";
+
+const CustomCursor = dynamic(() =>
+  import("@/components/custom-cursor").then((mod) => mod.CustomCursor),
+);
 
 const fontSans = FontSans({
   subsets: ["latin"],

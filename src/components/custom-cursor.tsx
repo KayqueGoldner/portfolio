@@ -20,6 +20,7 @@ export function CustomCursor() {
   const [isVisible, setIsVisible] = useState(false);
   const [isClicking, setIsClicking] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const [stickyElement, setStickyElement] = useState<HTMLElement | null>(null);
   const [stickyRect, setStickyRect] = useState<DOMRect | null>(null);
   const [isExiting, setIsExiting] = useState(false);
@@ -28,6 +29,21 @@ export function CustomCursor() {
 
   useEffect(() => {
     setIsMounted(true);
+
+    // detect mobile devices
+    const checkIfMobile = () => {
+      const userAgent =
+        typeof window.navigator === "undefined" ? "" : navigator.userAgent;
+      const mobile = Boolean(
+        userAgent.match(
+          /Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i,
+        ),
+      );
+      setIsMobile(mobile || window.innerWidth <= 768);
+    };
+
+    checkIfMobile();
+    window.addEventListener("resize", checkIfMobile);
 
     const updatePosition = (e: MouseEvent) => {
       // Set position directly without requestAnimationFrame for faster response
@@ -124,13 +140,12 @@ export function CustomCursor() {
     };
   }, [cursorX, cursorY, stickyElement, isExiting]);
 
-  // Don't render anything during SSR to prevent hydration errors
-  if (!isMounted) return null;
+  if (!isMounted || isMobile) return null;
 
   return (
     <>
       {/* Only apply cursor: none on client-side to prevent hydration mismatch */}
-      {isMounted && (
+      {isMounted && !isMobile && (
         <style jsx global>{`
           html,
           body,
@@ -291,7 +306,7 @@ export function CustomCursor() {
       </AnimatePresence>
 
       {/* Decorative particles that follow the cursor */}
-      {isPointer && !stickyElement && !isExiting && isVisible && (
+      {isPointer && !isExiting && isVisible && (
         <motion.div
           className="pointer-events-none fixed top-0 left-0 z-[9998]"
           style={{
