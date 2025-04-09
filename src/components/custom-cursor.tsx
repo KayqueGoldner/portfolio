@@ -50,8 +50,9 @@ export function CustomCursor() {
       cursorX.set(e.clientX);
       cursorY.set(e.clientY);
 
-      // Check if the cursor is over a clickable element
       const target = e.target as HTMLElement;
+
+      // Check if the target is clickable (e.g., a link, button, input, etc.
       const isClickable =
         target.tagName.toLowerCase() === "a" ||
         target.tagName.toLowerCase() === "button" ||
