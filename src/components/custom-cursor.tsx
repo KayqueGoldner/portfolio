@@ -9,6 +9,11 @@ import {
 } from "framer-motion";
 import { cn } from "@/lib/utils";
 
+const isFirefox = () => {
+  if (typeof window === "undefined") return false;
+  return navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
+};
+
 export function CustomCursor() {
   const cursorX = useMotionValue(0);
   const cursorY = useMotionValue(0);
@@ -141,7 +146,7 @@ export function CustomCursor() {
     };
   }, [cursorX, cursorY, stickyElement, isExiting]);
 
-  if (!isMounted || isMobile) return null;
+  if (!isMounted || isMobile || isFirefox()) return null;
 
   return (
     <>
