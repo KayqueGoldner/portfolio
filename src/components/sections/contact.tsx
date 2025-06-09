@@ -13,7 +13,11 @@ export const Contact = () => {
             Entre em contato
           </h2>
           <div>
-            <Link href={DATA.contact.social.LinkedIn.url} target="_blank">
+            <Link
+              href={DATA.contact.social.LinkedIn.url}
+              target="_blank"
+              data-particles
+            >
               <Button variant="link" className="text-base">
                 <FaLinkedin className="size-5" />
                 LinkedIn

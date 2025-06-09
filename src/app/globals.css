@@ -103,6 +103,13 @@
       --chart-4: 43 74% 66%;
 
       --chart-5: 27 87% 67%;
+
+      --cursor-bg: radial-gradient(circle, rgba(0 0 0 / 0.9), rgba(0 0 0 / 0.4));
+      --cursor-shadow: 0 0 12px rgba(0 0 0 / 0.7), 0 0 24px rgba(0 0 0 / 0.3);
+      --cursor-border-color: rgba(0 0 0 / 0.8);
+      --cursor-border-shadow: 0 0 8px rgba(0 0 0 / 0.5);
+      --particle-bg: radial-gradient(circle, rgba(0 0 0 / 0.9), rgba(0 0 0 / 0.3));
+      --particle-shadow: 0 0 6px rgba(0 0 0 / 0.6);
     }
 
     .dark {
@@ -138,15 +145,22 @@
       --chart-3: 30 80% 55%;
       --chart-4: 280 65% 60%;
       --chart-5: 340 75% 55%;
+
+      --cursor-bg: radial-gradient(circle, rgba(255 255 255 / 0.8), rgba(255 255 255 / 0.3));
+      --cursor-shadow: 0 0 10px rgba(255 255 255 / 0.8), 0 0 20px rgba(255 255 255 / 0.4);
+      --cursor-border-color: rgba(255 255 255 / 0.9);
+      --cursor-border-shadow: 0 0 10px rgba(255 255 255 / 0.6);
+      --particle-bg: radial-gradient(circle, rgba(255 255 255 / 0.9), rgba(255 255 255 / 0.4));
+      --particle-shadow: 0 0 8px rgba(255 255 255 / 0.7);
     }
   }
 
   @layer base {
     * {
-      @apply border-border;
+      @apply border-border !cursor-none;
     }
     body {
-      @apply bg-background text-foreground;
+      @apply bg-background text-foreground cursor-none;
     }
   }
 
@@ -296,3 +310,65 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
     transform: translateY(-50%);
   }
 }
+@layer utilities {
+  .cursor {
+    @apply pointer-events-none fixed z-[9999] rounded-full transition-transform;
+    width: 14px;
+    height: 14px;
+    transform: translate(-50%, -50%);
+    background: var(--cursor-bg);
+    opacity: 0.9;
+    box-shadow: var(--cursor-shadow);
+    backdrop-filter: blur(2px);
+  }
+
+  .cursor-border {
+    @apply pointer-events-none fixed z-[9999] rounded-full border;
+    width: 38px;
+    height: 38px;
+    transform: translate(-50%, -50%);
+    border-width: 2px;
+    border-color: var(--cursor-border-color);
+    box-shadow: var(--cursor-border-shadow);
+    transition: 100ms ease-out;
+    transition-property: width, height, top, right, left, bottom;
+    animation: pulse 2s infinite ease-in-out;
+  }
+
+  .particle {
+    @apply pointer-events-none fixed rounded-full;
+    width: 6px;
+    height: 6px;
+    background: var(--particle-bg);
+    box-shadow: var(--particle-shadow);
+    backdrop-filter: blur(1px);
+    transform: translate(-50%, -50%);
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0.8;
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(1.1);
+      opacity: 0.4;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes particleOrbit {
+    0% {
+      transform: translate(-50%, -50%) rotate(0deg) translateX(20px);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(360deg) translateX(20px);
+      opacity: 0;
+    }
+  }
+}
+

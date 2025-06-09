@@ -75,6 +75,7 @@ export function ProjectCard({
             "block cursor-pointer overflow-hidden rounded-lg",
             className,
           )}
+          data-particles
         >
           {video && (
             <video
