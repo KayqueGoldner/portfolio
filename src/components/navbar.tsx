@@ -1,7 +1,11 @@
 "use client";
 
+import Link from "next/link";
+import { useEffect, useState } from "react";
+
 import { Dock, DockIcon } from "@/components/magicui/dock";
 import { ModeToggle } from "@/components/mode-toggle";
+import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
 import { buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -11,28 +15,17 @@ import {
 } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
-import { useEffect, useState } from "react";
 
 export default function Navbar() {
-  // Initialize isFixed to false (will show in hero initially)
   const [isFixed, setIsFixed] = useState(false);
-  // Initialize mounted to true to ensure initial render
-  const [mounted, setMounted] = useState(true);
 
   useEffect(() => {
-    // Ensure we're running on the client
     if (typeof window === "undefined") return;
 
-    // Mark component as mounted
-    setMounted(true);
-
     const handleScroll = () => {
-      // Get the hero section height to determine when to fix the navbar
       const heroSection = document.getElementById("hero");
       if (heroSection) {
         const heroHeight = heroSection.offsetHeight;
-        // Add some offset to make the transition happen after scrolling past the hero description
         const scrollThreshold = heroHeight - 100;
 
         if (window.scrollY > scrollThreshold) {
@@ -43,13 +36,10 @@ export default function Navbar() {
       }
     };
 
-    // Add scroll event listener
     window.addEventListener("scroll", handleScroll);
 
-    // Initial check - run immediately and then again after a delay
     handleScroll();
 
-    // Run again after a delay to ensure DOM is fully loaded
     const timer = setTimeout(() => {
       handleScroll();
     }, 500);
@@ -60,7 +50,10 @@ export default function Navbar() {
     };
   }, []);
 
-  // Always render the component, even during hydration
+  const isFirefox =
+    typeof navigator !== "undefined" &&
+    navigator.userAgent.toLowerCase().includes("firefox");
+
   return (
     <div
       className={cn(
@@ -89,7 +82,7 @@ export default function Navbar() {
                   )}
                   data-cursor-stick
                 >
-                  <item.icon className="size-4" />
+                  <item.icon />
                 </Link>
               </TooltipTrigger>
               <TooltipContent>
@@ -114,7 +107,7 @@ export default function Navbar() {
                     target="_blank"
                     data-cursor-stick
                   >
-                    <social.icon className="size-4" />
+                    <social.icon />
                   </Link>
                 </TooltipTrigger>
                 <TooltipContent>
@@ -127,7 +120,16 @@ export default function Navbar() {
         <DockIcon>
           <Tooltip>
             <TooltipTrigger asChild>
-              <ModeToggle />
+              {isFirefox ? (
+                <ModeToggle />
+              ) : (
+                <AnimatedThemeToggler
+                  className={cn(
+                    buttonVariants({ variant: "ghost" }),
+                    "size-12",
+                  )}
+                />
+              )}
             </TooltipTrigger>
             <TooltipContent>
               <p>Theme</p>

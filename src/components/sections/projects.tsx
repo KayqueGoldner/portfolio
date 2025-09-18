@@ -1,10 +1,8 @@
 "use client";
 
-import { AnimatedGradientText } from "@/components/magicui/animated-gradient-text";
 import { MasonryGrid } from "@/components/masonry-grid";
 import { ProjectCard } from "@/components/project-card";
 import { DATA } from "@/data/resume";
-import { cn } from "@/lib/utils";
 
 export const Projects = () => {
   return (
@@ -12,31 +10,6 @@ export const Projects = () => {
       <div className="w-full space-y-12 py-12">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
-            <div className="relative inline-block overflow-hidden rounded-xl px-6 py-1">
-              <span
-                className={cn(
-                  "animate-gradient absolute inset-0 block h-full w-full rounded-[inherit] bg-gradient-to-r from-[#454545]/50 via-[#f1f1f1]/50 to-[#454545]/50 bg-[length:300%_100%] p-[1px]",
-                )}
-                style={{
-                  WebkitMask:
-                    "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-                  WebkitMaskComposite: "destination-out",
-                  mask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-                  maskComposite: "subtract",
-                  WebkitClipPath: "padding-box",
-                  ...({
-                    "--bg-size": "300%",
-                  } as React.CSSProperties),
-                }}
-              />
-              <AnimatedGradientText
-                colorFrom="#454545"
-                colorTo="#f1f1f1"
-                className="text-base"
-              >
-                Meus Projetos
-              </AnimatedGradientText>
-            </div>
             <h2 className="text-2xl font-bold tracking-tighter sm:text-4xl">
               Veja o meu trabalho mais recente
             </h2>

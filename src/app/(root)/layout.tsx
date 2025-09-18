@@ -1,6 +1,6 @@
 import "@/app/globals.css";
 import type { Metadata } from "next";
-import { Inter as FontSans } from "next/font/google";
+import { Albert_Sans } from "next/font/google";
 import dynamic from "next/dynamic";
 
 import { ThemeProvider } from "@/components/theme-provider";
@@ -8,13 +8,13 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
 import { cn } from "@/lib/utils";
 
-const CustomCursor = dynamic(() =>
-  import("@/components/custom-cursor").then((mod) => mod.CustomCursor),
-);
+// const CustomCursor = dynamic(() =>
+//   import("@/components/custom-cursor").then((mod) => mod.CustomCursor),
+// );
 
-const fontSans = FontSans({
+const font = Albert_Sans({
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-albert-sans",
   weight: ["300", "400", "500", "600", "700"],
 });
 
@@ -75,14 +75,19 @@ export default function RootLayout({
     <html lang="pt-BR" suppressHydrationWarning>
       <body
         className={cn(
-          "bg-background min-h-screen overflow-y-scroll font-sans antialiased",
-          fontSans.variable,
+          "min-h-screen overflow-y-scroll font-sans antialiased",
+          font.variable,
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="system">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           <TooltipProvider delayDuration={0}>
             {children}
-            <CustomCursor />
+            {/* <CustomCursor /> */}
           </TooltipProvider>
         </ThemeProvider>
         <script

@@ -1,8 +1,9 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 import { useTheme } from "next-themes";
+import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
+
+import { Button } from "@/components/ui/button";
 
 export function ModeToggle() {
   const { theme, setTheme } = useTheme();
@@ -16,8 +17,8 @@ export function ModeToggle() {
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
       data-cursor-stick
     >
-      <SunIcon className="size-[1.2rem] text-neutral-800 dark:hidden dark:text-neutral-200" />
-      <MoonIcon className="hidden size-[1.2rem] text-neutral-800 dark:block dark:text-neutral-200" />
+      <SunIcon className="text-neutral-800 dark:hidden dark:text-neutral-200" />
+      <MoonIcon className="hidden text-neutral-800 dark:block dark:text-neutral-200" />
     </Button>
   );
 }

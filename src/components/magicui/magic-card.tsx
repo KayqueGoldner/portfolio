@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import { motion, useMotionTemplate, useMotionValue } from "motion/react";
+import React, { useCallback, useEffect, useRef } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -27,25 +27,6 @@ export function MagicCard({
   const cardRef = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(-gradientSize);
   const mouseY = useMotionValue(-gradientSize);
-  const [isMounted, setIsMounted] = useState(false);
-
-  // Create motion templates outside of conditional rendering
-  const borderGradient = useMotionTemplate`
-    radial-gradient(${gradientSize}px circle at ${mouseX}px ${mouseY}px,
-    ${gradientFrom}, 
-    ${gradientTo}, 
-    hsl(var(--border)) 100%
-    )
-  `;
-
-  const contentGradient = useMotionTemplate`
-    radial-gradient(${gradientSize}px circle at ${mouseX}px ${mouseY}px, ${gradientColor}, transparent 100%)
-  `;
-
-  // After mounting, we can safely show the UI that depends on client-side features
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   const handleMouseMove = useCallback(
     (e: MouseEvent) => {
@@ -78,8 +59,6 @@ export function MagicCard({
   }, [handleMouseMove, mouseX, gradientSize, mouseY]);
 
   useEffect(() => {
-    if (!isMounted) return;
-
     document.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseout", handleMouseOut);
     document.addEventListener("mouseenter", handleMouseEnter);
@@ -89,44 +68,40 @@ export function MagicCard({
       document.removeEventListener("mouseout", handleMouseOut);
       document.removeEventListener("mouseenter", handleMouseEnter);
     };
-  }, [handleMouseEnter, handleMouseMove, handleMouseOut, isMounted]);
+  }, [handleMouseEnter, handleMouseMove, handleMouseOut]);
 
   useEffect(() => {
-    if (isMounted) {
-      mouseX.set(-gradientSize);
-      mouseY.set(-gradientSize);
-    }
-  }, [gradientSize, mouseX, mouseY, isMounted]);
+    mouseX.set(-gradientSize);
+    mouseY.set(-gradientSize);
+  }, [gradientSize, mouseX, mouseY]);
 
   return (
     <div
       ref={cardRef}
       className={cn("group relative rounded-[inherit]", className)}
     >
-      {isMounted ? (
-        <>
-          <motion.div
-            className="bg-border pointer-events-none absolute inset-0 rounded-[inherit] duration-300 group-hover:opacity-100"
-            style={{
-              background: borderGradient,
-            }}
-          />
-          <div className="bg-background absolute inset-px rounded-[inherit]" />
-          <motion.div
-            className="pointer-events-none absolute inset-px rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-            style={{
-              background: contentGradient,
-              opacity: gradientOpacity,
-            }}
-          />
-        </>
-      ) : (
-        <>
-          {/* Static version for SSR */}
-          <div className="bg-border pointer-events-none absolute inset-0 rounded-[inherit]" />
-          <div className="bg-background absolute inset-px rounded-[inherit]" />
-        </>
-      )}
+      <motion.div
+        className="bg-border pointer-events-none absolute inset-0 rounded-[inherit] duration-300 group-hover:opacity-100"
+        style={{
+          background: useMotionTemplate`
+          radial-gradient(${gradientSize}px circle at ${mouseX}px ${mouseY}px,
+          ${gradientFrom}, 
+          ${gradientTo}, 
+          var(--border) 100%
+          )
+          `,
+        }}
+      />
+      <div className="bg-background absolute inset-px rounded-[inherit]" />
+      <motion.div
+        className="pointer-events-none absolute inset-px rounded-[inherit] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        style={{
+          background: useMotionTemplate`
+            radial-gradient(${gradientSize}px circle at ${mouseX}px ${mouseY}px, ${gradientColor}, transparent 100%)
+          `,
+          opacity: gradientOpacity,
+        }}
+      />
       <div className="relative">{children}</div>
     </div>
   );

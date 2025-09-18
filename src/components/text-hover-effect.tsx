@@ -16,7 +16,7 @@ export const TextHoverEffect = ({ text, className }: TextEffectProps) => {
   const [isHovering, setIsHovering] = useState(false);
   const [mounted, setMounted] = useState(false);
   const textRef = useRef<HTMLHeadingElement>(null);
-  const { theme, resolvedTheme } = useTheme();
+  const { theme } = useTheme();
 
   // After mounting, we can safely show the UI that depends on the theme
   useEffect(() => {
@@ -45,12 +45,19 @@ export const TextHoverEffect = ({ text, className }: TextEffectProps) => {
   const darkModeColor = "#303030";
   const lightModeColor = "#e0e0e0";
 
-  // Only use theme-based colors on the client after mounting
-  const currentTheme = mounted ? resolvedTheme || theme : "light";
-  const baseColor = currentTheme === "dark" ? darkModeColor : lightModeColor;
+  const baseColor = theme === "dark" ? darkModeColor : lightModeColor;
 
-  const darkModeHighlight = "rgba(255, 255, 255, ${opacity})";
-  const lightModeHighlight = "rgba(0, 0, 0, ${opacity})";
+  const darkModeHighlight = (opacity: number) => {
+    return `rgba(255, 255, 255, ${opacity})`;
+  };
+  const lightModeHighlight = (opacity: number) => {
+    return `rgba(0, 0, 0, ${opacity})`;
+  };
+  const getHightlightColor = (opacity: number) => {
+    return theme === "dark"
+      ? darkModeHighlight(opacity)
+      : lightModeHighlight(opacity);
+  };
 
   return (
     <motion.h1
@@ -73,13 +80,7 @@ export const TextHoverEffect = ({ text, className }: TextEffectProps) => {
             1 - Math.abs(index * 15 - mousePosition.x) / 100,
           );
 
-          const highlightTemplate =
-            currentTheme === "dark" ? darkModeHighlight : lightModeHighlight;
-
-          const highlightColor = highlightTemplate.replace(
-            "${opacity}",
-            opacity.toString(),
-          );
+          const highlightColor = getHightlightColor(opacity);
 
           return (
             <motion.span

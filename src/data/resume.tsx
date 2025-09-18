@@ -80,12 +80,12 @@ export const DATA = {
         {
           type: "Website",
           href: "https://tvflix-kayquegoldner.vercel.app/",
-          icon: <FaRegEye className="size-4" />,
+          icon: <FaRegEye />,
         },
         {
           type: "GitHub",
           href: "https://github.com/KayqueGoldner/tvflix",
-          icon: <FaGithub className="size-4" />,
+          icon: <FaGithub />,
         },
       ],
       image: "/projects/tvflix.png",
@@ -102,12 +102,12 @@ export const DATA = {
         {
           type: "Website",
           href: "https://weatherio-kayquegoldner.vercel.app/",
-          icon: <FaRegEye className="size-4" />,
+          icon: <FaRegEye />,
         },
         {
           type: "GitHub",
           href: "https://github.com/KayqueGoldner/weatherio",
-          icon: <FaGithub className="size-4" />,
+          icon: <FaGithub />,
         },
       ],
       image: "/projects/weatherio.png",
@@ -124,12 +124,12 @@ export const DATA = {
         {
           type: "Website",
           href: "https://pixstock-projeto.netlify.app/",
-          icon: <FaRegEye className="size-4" />,
+          icon: <FaRegEye />,
         },
         {
           type: "GitHub",
           href: "https://github.com/KayqueGoldner/pixstock",
-          icon: <FaGithub className="size-4" />,
+          icon: <FaGithub />,
         },
       ],
       image: "/projects/pixstock.png",
@@ -154,12 +154,12 @@ export const DATA = {
         {
           type: "Website",
           href: "https://jira-clone-nextjs-navy.vercel.app/",
-          icon: <FaRegEye className="size-4" />,
+          icon: <FaRegEye />,
         },
         {
           type: "GitHub",
           href: "https://github.com/KayqueGoldner/jira-clone-nextjs",
-          icon: <FaGithub className="size-4" />,
+          icon: <FaGithub />,
         },
       ],
       image: "/projects/jira-clone.png",
@@ -187,12 +187,12 @@ export const DATA = {
         {
           type: "Website",
           href: "https://notification-service-nextjs.vercel.app/",
-          icon: <FaRegEye className="size-4" />,
+          icon: <FaRegEye />,
         },
         {
           type: "GitHub",
           href: "https://github.com/KayqueGoldner/notification-service-nextjs",
-          icon: <FaGithub className="size-4" />,
+          icon: <FaGithub />,
         },
       ],
       image: "/projects/notification-service.png",
@@ -210,12 +210,12 @@ export const DATA = {
         {
           type: "Website",
           href: "https://xora-ai-video-editor-project.netlify.app/",
-          icon: <FaRegEye className="size-4" />,
+          icon: <FaRegEye />,
         },
         {
           type: "GitHub",
           href: "https://github.com/KayqueGoldner/xora-ai-video-editor-landing-page",
-          icon: <FaGithub className="size-4" />,
+          icon: <FaGithub />,
         },
       ],
       image: "/projects/xora-ai-video-editor.png",
@@ -242,12 +242,12 @@ export const DATA = {
         {
           type: "Website",
           href: "",
-          icon: <FaRegEye className="size-4" />,
+          icon: <FaRegEye />,
         },
         {
           type: "GitHub",
           href: "https://github.com/KayqueGoldner/ordereasy-restaurant-dashboard-nextjs",
-          icon: <FaGithub className="size-4" />,
+          icon: <FaGithub />,
         },
       ],
       image: "/projects/ordereasy-dashboard.png",
@@ -273,12 +273,12 @@ export const DATA = {
         {
           type: "Website",
           href: "https://library-management-system-nextjs.vercel.app/",
-          icon: <FaRegEye className="size-4" />,
+          icon: <FaRegEye />,
         },
         {
           type: "GitHub",
           href: "https://github.com/KayqueGoldner/library-management-system-nextjs",
-          icon: <FaGithub className="size-4" />,
+          icon: <FaGithub />,
         },
       ],
       image: "/projects/library-management-system.png",
